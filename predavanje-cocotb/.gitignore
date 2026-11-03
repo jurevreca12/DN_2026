@@ -3,3 +3,4 @@ venv/
 *sim_build*
 *simv
 *.swp
+results.xml

@@ -40,7 +40,22 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     zlib1g-dev \
     iverilog \
     gtkwave \
+		vim \
+		autoconf \
+		libfl2 \
+		libfl-dev \
+		zlib1g \
+		zlib1g-dev \
+		help2man \
     && rm -rf /var/lib/apt/lists/*
+
+RUN cd /opt && \
+    git clone https://github.com/verilator/verilator verilator && \
+    cd verilator && \
+    git checkout v5.038 && \
+    autoconf && \
+    ./configure && \
+    make -j `nproc`
 
 # --------------------------------------------------
 # 2. Create a non-root user
@@ -88,7 +103,7 @@ RUN sed -i \
 # --------------------------------------------------
 # 5. Configure the interactive shell
 # --------------------------------------------------
-ENV PATH="/home/developer/.local/bin:/home/developer/opt/sv2v:/home/developer/miniconda3/bin:/home/developer/miniconda3/envs/xc7/bin/:${PATH}"
+ENV PATH="/home/developer/.local/bin:/home/developer/opt/sv2v:/home/developer/miniconda3/bin:/home/developer/miniconda3/envs/xc7/bin/:/opt/verilator/bin/:${PATH}"
 
 SHELL ["/bin/bash", "-c"]
 
