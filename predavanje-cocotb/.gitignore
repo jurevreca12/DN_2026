@@ -4,3 +4,4 @@ venv/
 *simv
 *.swp
 results.xml
+.~lock.*
