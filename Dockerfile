@@ -101,6 +101,18 @@ RUN sed -i \
     && /home/developer/install.sh --minimal --no-test
 
 # --------------------------------------------------
+# 4b. cocotb 2.x in its own virtual environment
+#
+# --minimal above skips the simulation tools, so create the
+# same venv install.sh would (~/opt/verif). Activate with:
+#   source ~/opt/verif/bin/activate
+# --------------------------------------------------
+RUN python3 -m venv /home/developer/opt/verif \
+    && /home/developer/opt/verif/bin/pip install --no-cache-dir --upgrade pip \
+    && /home/developer/opt/verif/bin/pip install --no-cache-dir "cocotb>=2.0,<3" pytest \
+    && /home/developer/opt/verif/bin/python -c "import cocotb; assert cocotb.__version__.startswith('2.'), cocotb.__version__"
+
+# --------------------------------------------------
 # 5. Configure the interactive shell
 # --------------------------------------------------
 ENV PATH="/home/developer/.local/bin:/home/developer/opt/sv2v:/home/developer/miniconda3/bin:/home/developer/miniconda3/envs/xc7/bin/:/opt/verilator/bin/:${PATH}"
