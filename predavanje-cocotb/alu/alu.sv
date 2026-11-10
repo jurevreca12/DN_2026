@@ -7,12 +7,12 @@ module alu (
 	output logic [3:0] c 
 );
 	assign c = (alu_control == 3'b000) ? (a + b) :
-			   (alu_control == 3'b001) ? (a - b) :
-			   (alu_control == 3'b010) ? (a & b) :
-			   (alu_control == 3'b011) ? (a | b) :
-			   (alu_control == 3'b100) ? (a ^ b) :
-			   (alu_control == 3'b101) ? (a == b) :
-			   (alu_control == 3'b110) ? a :
-			   (alu_control == 3'b111) ? b :
-			   4'b0000;
+		   (alu_control == 3'b001) ? (a - b) :
+		   (alu_control == 3'b010) ? (a & b) :
+		   (alu_control == 3'b011) ? (a | b) :
+		   (alu_control == 3'b100) ? (a ^ b) :
+		   (alu_control == 3'b101) ? (a == b) :
+		   (alu_control == 3'b110) ? a :
+		   (alu_control == 3'b111) ? b :
+		   4'b0000;
 endmodule

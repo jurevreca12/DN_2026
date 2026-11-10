@@ -53,6 +53,9 @@ module buggy_fifo #(
                 wr_ptr <= next_ptr(wr_ptr);
             end
 
+            if (push && pop) begin
+                // Do nothing, count remains the same
+            end else
             if (pop)
                 rd_ptr <= next_ptr(rd_ptr);
             if (push)

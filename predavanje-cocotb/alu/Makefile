@@ -1,5 +1,5 @@
 IVERILOG ?= /usr/bin/iverilog
-VVP 		 ?= /usr/bin/vvp
+VVP      ?= /usr/bin/vvp
 
 SIM = simv
 SOURCES = alu.sv alu_tb.sv
